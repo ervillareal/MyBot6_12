@@ -1012,6 +1012,23 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		$AndroidAdbClicksEnabled = IniRead($config, "android", "adb.clicks.enabled", ($AndroidAdbClicksEnabled ? "1" : "0")) = "1"
 		$AndroidAdbClicksTroopDeploySize = Int(IniRead($config, "android", "adb.clicks.troop.deploy.size", $AndroidAdbClicksTroopDeploySize))
 
+		; by AwessomeGamer
+		IniReadS($iChkDontRemove, $config, "troop", "DontRemove", "0")
+
+		; SmartZap Settings - Added by LunaEclipse
+		IniReadS($ichkSmartZap, $config, "SmartZap", "UseSmartZap", "1")
+		IniReadS($ichkSmartZapDB, $config, "SmartZap", "ZapDBOnly", "1")
+		IniReadS($ichkSmartZapSaveHeroes, $config, "SmartZap", "THSnipeSaveHeroes", "1")
+		IniReadS($itxtMinDE, $config, "SmartZap", "MinDE", "300")
+
+		; Close When Training Settings
+		$ichkCloseTraining = Number(IniRead($config, "Close When Training", "Enabled", "1"))
+		$minTrainAddition = Number(IniRead($config, "Close When Training", "AdditionMin", "1"))
+		$maxTrainAddition = Number(IniRead($config, "Close When Training", "AdditionMax", "5"))
+		IniReadS($LeaveCoCOpen , $config, "Leave CoC Open", "Enabled", "0")
+		IniReadS($CloseCoCGame, $config, "Close CoC Game", "Enabled", "1")
+		IniReadS($RandomCoCOpen, $config, "Random Leave-Close", "Enabled", "0")
+		IniReadS($RandomCloseTraining, $config, "Random Stay-Close Game", "Enabled", "0")
 	Else
 		Return False
 	EndIf

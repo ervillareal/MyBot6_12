@@ -115,7 +115,6 @@
 #include "functions\CreateArmy\Train.au3"
 #include "functions\CreateArmy\TrainIt.au3"
 
-
 #include "functions\Image Search\ImageSearch.au3"
 #include "functions\Image Search\checkDeadBase.au3"
 #include "functions\Image Search\checkTownhall.au3"
@@ -250,3 +249,10 @@
 #include "functions\Village\UpgradeHeroes.au3"
 #include "functions\Village\ClanLevel.au3"
 #include "functions\Village\StarBonus.au3"
+
+; Close while training
+#include "functions\Psychic Octopus\psychicOctopus.au3"
+
+; SmartZap files - Added by LunaEclipse
+#include "functions\SmartZap\drillSearch.au3"
+#include "functions\SmartZap\smartZap.au3"

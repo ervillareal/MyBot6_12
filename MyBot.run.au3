@@ -47,8 +47,21 @@ EndIf
 #include "COCBot\MBR Global Variables.au3"
 #include "COCBot\functions\Config\ScreenCoordinates.au3"
 
+Local $sModversion
+$sModversion = "Chk_0000" ; MyBot.run v6.0.0
+$sModversion = "Chk_1000" ; MyBot.run v6.1.0
+$sModversion = "Chk_1100" ; MyBot.run v6.1.1
+$sModversion = "Chk_1101" ; Fix for Donations
+$sModversion = "Chk_1102" ; Add Close While Training
+$sModversion = "Chk_1103" ; Start SmartZap Fix
+$sModversion = "Chk_1104" ; SmartZap ok
+$sModversion = "Chk_1105" ; Fix for CCWT
+$sModversion = "Chk_1106" ; CCWT will exec only if Train Troops < 80%
+$sModversion = "Chk_1107" ; Revert Fix for Donations ( Chk_1101 )
+$sModversion = "Chk_1200" ; MyBot.run v6.1.2
+$sModversion = "Chk_1201" ; SmartZap, FastClicks, CCWT, DEB
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
-$sBotTitle = "My Bot " & $sBotVersion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
+$sBotTitle = "My Bot " & $sBotVersion & " " & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
 Opt("WinTitleMatchMode", 3) ; Window Title exact match mode
 #include "COCBot\functions\Android\Android.au3"
@@ -395,6 +408,9 @@ Func Idle() ;Sequence that runs until Full Army
 		$iCollectCounter = $iCollectCounter + 1
 		If $CommandStop = -1 Then
 			Train()
+				; Close While Training
+				checkRemainingTraining()
+				; Close While Training - end
 				If $Restart = True Then ExitLoop
 				If _Sleep($iDelayIdle1) Then ExitLoop
 				checkMainScreen(False)

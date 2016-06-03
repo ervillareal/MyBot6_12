@@ -1430,4 +1430,63 @@ Global $THSnipeBeforeDBEnable = 0 , $THSnipeBeforeLBEnable = 0
 Global $THSnipeBeforeDBTiles = 0 , $THSnipeBeforeLBTiles = 0
 Global $THSnipeBeforeDBScript = 0 , $THSnipeBeforeLBScript = 0
 
+; by AwessomeGamer
+Global $iChkDontRemove, $chkDontRemove
 
+; Close while training variables
+Global $ichkCloseTraining = 1
+Global $minTrainAddition = 1
+Global $maxTrainAddition = 5
+Global $LeaveCoCOpen = 0
+Global $CloseCoCGame = 1
+Global $RandomCoCOpen = 0
+Global $RandomCloseTraining = 0
+Global $RandomCloseTraining2 = 0
+
+; Sleep at night variables
+Global $ichkCloseNight = 1
+Global $sleepStart = 0, $sleepEnd = 8
+Global $nextSleepStart = -999, $nextSleepEnd = -999
+
+; Daily attack variables
+Global $ichkLimitAttacks = 1
+Global $rangeAttacksStart = 20, $rangeAttacksEnd = 25
+Global $dailyAttacks = 0, $dailyAttackLimit = 0
+
+; Randomization of functions
+Global $RandomTimer = True
+Global $sTimerRandomHalt
+
+; SmartZap GUI variables - Added by LunaEclipse
+Global $ichkSmartZap = 1
+Global $ichkSmartZapDB = 1
+Global $ichkSmartZapSaveHeroes = 1
+Global $itxtMinDE = 300
+
+; SmartZap stats - Added by LunaEclipse
+Global $smartZapGain = 0
+Global $numLSpellsUsed = 0
+
+; SmartZap Array to hold Total Amount of DE available from Drill at each level (1-6) - Added by LunaEclipse
+Global Const $drillLevelHold[6] = [120, _
+								   225, _
+								   405, _
+								   630, _
+								   960, _
+								   1350]
+
+; SmartZap Array to hold Amount of DE available to steal from Drills at each level (1-6) - Added by LunaEclipse
+Global Const $drillLevelSteal[6] = [59, _
+                                    102, _
+								    172, _
+								    251, _
+								    343, _
+								    479]
+
+; Troop types - Added CC Spell as a type, so clan castle spell can be reported.
+Global Enum  $eCCSpell = $eHaSpell + 1
+
+Global Const $eDeployWait = $eHaSpell + 1
+Global Const $eDeployUnused = $eHaSpell + 2
+Global Const $DEPLOY_WAIT_STRING = "<Delay>"
+Global Const $DEPLOY_EMPTY_STRING = "<Unused>"
