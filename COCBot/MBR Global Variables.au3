@@ -1442,6 +1442,8 @@ Global $CloseCoCGame = 1
 Global $RandomCoCOpen = 0
 Global $RandomCloseTraining = 0
 Global $RandomCloseTraining2 = 0
+Global $TrainLogoutMaxTime = 1
+Global $TrainLogoutMaxTimeTXT = 15
 
 ; Sleep at night variables
 Global $ichkCloseNight = 1

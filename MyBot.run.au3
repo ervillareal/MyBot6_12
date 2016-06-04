@@ -60,6 +60,7 @@ $sModversion = "Chk_1106" ; CCWT will exec only if Train Troops < 80%
 $sModversion = "Chk_1107" ; Revert Fix for Donations ( Chk_1101 )
 $sModversion = "Chk_1200" ; MyBot.run v6.1.2
 $sModversion = "Chk_1201" ; SmartZap, FastClicks, CCWT, DEB
+$sModversion = "Chk_1202" ; CCWT user set max sleep time
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".1 " & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
@@ -201,19 +202,19 @@ Func runBot() ;Bot that runs everything in order
 		$Restart = False
 		$fullArmy = False
 		$CommandStop = -1
-
-		; each loop ( after each attack ) will determinate if close while train or not
-		If $RandomCloseTraining = 1 then
+			
+		; each loop ( after each attack ) will determinate if close while train or not 
+		If $RandomCloseTraining = 1 then 
 			if $debugSetlog = 1 then Setlog("You chose the Random Close Or Leave train...", $COLOR_RED)
 			$RandomCloseTraining2 = Random(0,1,1)
-			If $RandomCloseTraining2 = 1 then $LeaveOrClose +=1
-			If $LeaveOrClose = 3 then
+			If $RandomCloseTraining2 = 1 then $LeaveOrClose +=1 
+			If $LeaveOrClose = 3 then 
 				$RandomCloseTraining2 = 0
-				$LeaveOrClose = 0
-			EndIf
+				$LeaveOrClose = 0 
+			EndIf 
 			if $debugSetlog = 1 then Setlog("$RandomCloseTraining2: " & $RandomCloseTraining2)
 		EndIf
-
+			
 		If _Sleep($iDelayRunBot1) Then Return
 		checkMainScreen()
 		If $Restart = True Then ContinueLoop

@@ -2299,6 +2299,13 @@ Func saveConfig() ;Saves the controls settings to the config
 		IniWrite($config, "Random Stay-Close Game", "Enabled", 0)
 	EndIf
 
+	If GUICtrlRead($chkTrainLogoutMaxTime) = $GUI_CHECKED Then
+		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 1)
+	Else
+		IniWrite($config, "TrainLogout", "TrainLogoutMaxTime", 0)
+	EndIf
+	IniWrite($config, "TrainLogout", "TrainLogoutMaxTimeTXT", GUICtrlRead($txtTrainLogoutMaxTime))
+
 	If $hFile <> -1 Then FileClose($hFile)
 
 EndFunc   ;==>saveConfig

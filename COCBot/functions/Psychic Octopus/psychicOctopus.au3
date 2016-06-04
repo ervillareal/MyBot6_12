@@ -152,15 +152,23 @@ Func checkRemainingTraining()
 	If $iRemainingTimeTroops < 6 Then 
 		Setlog( "Skip CCWT, Time < 5 Min [ Calculated: " & $iRemainingTimeTroops & " Min ]", $COLOR_BLUE)
 		Return
-	Else
-		If $iRemainingTimeTroops > 15 Then
-			Setlog( "Calculated CCWT Time: " & $iRemainingTimeTroops & " Min [Adjusted to 15~20 Min]", $COLOR_BLUE)
-			$iRemainingTimeTroops = 15
-		Endif
 	Endif
 
-	; Add random additional time from $minTrainAddition minute to $maxTrainAddition minutes
-	$iRemainingTimeTroops += Random($minTrainAddition, $maxTrainAddition, 1)
+	; If $iRemainingTimeTroops > 15 Then
+	;	Setlog( "Calculated CCWT Time: " & $iRemainingTimeTroops & " Min [Adjusted to 15~20 Min]", $COLOR_BLUE)
+	;	$iRemainingTimeTroops = 15
+	; Endif
+
+	; check for max logout time or add random additional time from $minTrainAddition minute to $maxTrainAddition minutes
+	; if max logout time checked, only logout for whatever the box is set to.
+	IF $TrainLogoutMaxTime = 1 and $iRemainingTimeTroops > $TrainLogoutMaxTimeTXT Then
+		$iRemainingTimeTroops = $TrainLogoutMaxTimeTXT - Random(0,1,0)
+		Setlog( "CCWT: " & round($iRemainingTimeTroops,1) & " Min (Max logout time enabled)", $COLOR_BLUE)
+	ELSE	
+		; Add random additional time from $minTrainAddition minute to $maxTrainAddition minutes
+		$iRemainingTimeTroops += Random($minTrainAddition, $maxTrainAddition, 1)
+	ENDIF
+
 	; Convert remaining time to seconds and close COC and wait for that length of time
 	CloseCOCAndWait($iRemainingTimeTroops * 60, True)
 EndFunc   ;==>checkRemainingTraining

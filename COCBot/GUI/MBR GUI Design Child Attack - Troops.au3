@@ -305,7 +305,7 @@ $hGUI_ARMY_TAB_ITEM2 = GUICtrlCreateTabItem(GetTranslated(600,21,"Spells"))
 
 Local $x = $xStart + 25, $y = $yStart +  80 + 25 - 60
 
-	$grpSpells = GUICtrlCreateGroup(GetTranslated(622,1, "Spells Composition"), $x - 20, $y - 20, 160, 335)
+	$grpSpells = GUICtrlCreateGroup(GetTranslated(622,1, "Spells Composition"), $x - 20, $y - 20, 180, 335)
 		$lblTotalSpell = GUICtrlCreateLabel(GetTranslated(622,2, "Spells Capacity"), $x - 20 , $y + 4, -1, -1, $SS_RIGHT)
 		$txtTotalCountSpell = GUICtrlCreateCombo("", $x + 105, $y , 35, 21, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 			GUICtrlSetTip(-1, GetTranslated(622,3, "Enter the No. of Spells Capacity. Set to ZERO if you don't want any Spells"))

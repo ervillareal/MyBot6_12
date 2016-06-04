@@ -2436,6 +2436,13 @@ _GUICtrlComboBox_SetCurSel($cmbTHSnipeBeforeLBScript, _GUICtrlComboBox_FindStrin
 	Else
 		GUICtrlSetState($chkRandomStayORClose, $GUI_UNCHECKED)
 	EndIf
+	
+	If $TrainLogoutMaxTime = 1 Then
+		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_CHECKED)
+	ElseIf $TrainLogoutMaxTime = 0 Then
+		GUICtrlSetState($chkTrainLogoutMaxTime, $GUI_UNCHECKED)
+	EndIf
+	GUICtrlSetData($txtTrainLogoutMaxTime, $TrainLogoutMaxTimeTXT)	
 
 	; Reenabling window redraw
 	If $bRedrawAtExit Then SetRedrawBotWindow(True)
