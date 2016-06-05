@@ -17,7 +17,7 @@ Func displayStealableLog($aDarkDrills)
 	; Create the log entry string
 	Local $drillStealableString = "Estimated stealable DE in Drills: "
 	; Loop through the array and add results to the log entry string
-	For $i = 0 to UBound($aDarkDrills) - 1
+	For $i = 0 To UBound($aDarkDrills) - 1
 		If $i = 0 Then
 			If $aDarkDrills[$i][3] <> -1 Then $drillStealableString &= $aDarkDrills[$i][3]
 		Else
@@ -31,7 +31,7 @@ EndFunc   ;==>displayStealableLog
 Func getDarkElixir()
 	Local $searchDark = "", $iCount = 0
 
-	If _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0a050a, 6), 10) or _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0F0617, 6), 5) Then ; Check if the village have a Dark Elixir Storage
+	If _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0a050a, 6), 10) Or _ColorCheck(_GetPixelColor(31, 144, True), Hex(0x0F0617, 6), 5) Then ; Check if the village have a Dark Elixir Storage
 		While $searchDark = ""
 			$oldSearchDark = $searchDark
 			$searchDark = getDarkElixirVillageSearch(45, 125) ; Get updated Dark Elixir value
@@ -63,7 +63,7 @@ Func getDrillOffset()
 	EndSwitch
 
 	Return $result
-EndFunc   ;==>getTownDrillOffset
+EndFunc   ;==>getDrillOffset
 
 Func getSpellOffset()
 	Local $result = -1
@@ -86,10 +86,14 @@ Func getSpellOffset()
 	Return $result
 EndFunc   ;==>getSpellOffset
 
+; This function taken and modified by the CastSpell function to make Zapping works
 Func PerformZap($ZapSpell, $x, $y)
 
 	Local $Spell = -1
 	Local $name = ""
+
+	If _Sleep(10) Then Return
+	If $Restart = True Then Return
 
 	For $i = 0 To UBound($atkTroops) - 1
 		If $atkTroops[$i][0] = $ZapSpell Then
@@ -98,13 +102,13 @@ Func PerformZap($ZapSpell, $x, $y)
 		EndIf
 	Next
 
-	;If ($Spell = -1) Then Return False
 	If $Spell > -1 Then
 		SetLog("Dropping " & $name)
 		SelectDropTroop($Spell)
+		If _Sleep($iDelayCastSpell1) Then Return
 		If IsAttackPage() Then Click($x, $y, 1, 0, "#0029")
 	Else
-		If $debugSetlog = 1 Then SetLog("No " & $name & " Found")
+		If $debugSetLog = 1 Then SetLog("No " & $name & " Found")
 	EndIf
 
 EndFunc   ;==>PerformZap
@@ -119,15 +123,14 @@ Func smartZap($minDE = -1)
 	If $minDE = -1 Then $minDE = Number($itxtMinDE)
 
 	; Get Dark Elixir value, if no DE value exists, exit.
-	; $searchDark = getDarkElixir()
 	$searchDark = getDarkElixirVillageSearch(45, 125)
 	If Number($searchDark) = 0 Then
 		SetLog("No Dark Elixir so lets just exit!", $COLOR_FUCHSIA)
 		Return $performedZap
 	; Check to see if the DE Storage is already full
-	; ElseIf getDarkElixirStorageFull() Then
-	;	SetLog("Your Dark Elixir Storage is full, no need to zap!", $COLOR_FUCHSIA)
-	;	Return $performedZap
+	ElseIf isDarkElixirFull() Then
+		SetLog("Your Dark Elixir Storage is full, no need to zap!", $COLOR_FUCHSIA)
+		Return $performedZap
 	; Check to make sure the account is high enough level to store DE.
 	ElseIf $iTownHallLevel < 7 Then
 		SetLog("You do not have the ability to store Dark Elixir, time to go home!", $COLOR_FUCHSIA)
@@ -139,7 +142,7 @@ Func smartZap($minDE = -1)
 	EndIf
 
 	; Check match mode
-	If $ichkSmartZapDB = 1 and $iMatchMode <> $DB Then
+	If $ichkSmartZapDB = 1 And $iMatchMode <> $DB Then
 		SetLog("Not a dead base so lets just go home!", $COLOR_FUCHSIA)
 		Return $performedZap
 	EndIf
@@ -190,9 +193,6 @@ Func smartZap($minDE = -1)
 
 		; Store the DE value before any Zaps are done.
 		$oldSearchDark = $searchDark
-
-		; Get the drop point for the lignting spell if it will be used
-		; $dropPoint = convertToPoint($aDarkDrills[0][0] + $strikeOffsets[0], $aDarkDrills[0][1] + $strikeOffsets[1])
 
 		; If you have max lightning spells, drop lightning on any level DE drill
 		If $numSpells > (4 - $spellAdjust) Then
@@ -283,7 +283,7 @@ Func smartZap($minDE = -1)
 			$testX = -1
 			$testY = -1
 
-			For $i = 0 To Ubound($aDrills) - 1
+			For $i = 0 To UBound($aDrills) - 1
 				If $aDrills[$i][0] <> -1 Then
 					$tempTestX = Abs($aDrills[$i][0] - $aDarkDrills[0][0])
 					$tempTestY = Abs($aDrills[$i][1] - $aDarkDrills[0][1])

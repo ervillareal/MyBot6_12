@@ -61,6 +61,7 @@ $sModversion = "Chk_1107" ; Revert Fix for Donations ( Chk_1101 )
 $sModversion = "Chk_1200" ; MyBot.run v6.1.2
 $sModversion = "Chk_1201" ; SmartZap, FastClicks, CCWT, DEB
 $sModversion = "Chk_1202" ; CCWT user set max sleep time
+$sModversion = "Chk_1203" ; CCWT try request troops before
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".1 " & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 

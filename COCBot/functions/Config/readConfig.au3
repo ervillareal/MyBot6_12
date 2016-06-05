@@ -1029,9 +1029,8 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		$CloseCoCGame = IniRead($config, "Close CoC Game", "Enabled", "1")
 		$RandomCoCOpen = IniRead($config, "Random Leave-Close", "Enabled", "0")
 		$RandomCloseTraining = IniRead($config, "Random Stay-Close Game", "Enabled", "0")
-		$TrainLogoutMaxTime = IniRead($config, "TrainLogout", "TrainLogoutMaxTime", "0")
-		$TrainLogoutMaxTimeTXT = IniRead($config, "TrainLogout", "TrainLogoutMaxTimeTXT", "15")	
-
+		$TrainLogoutMaxTime = IniRead($config, "TrainLogout", "TrainLogoutMaxTime", "1")
+		$TrainLogoutMaxTimeTXT = IniRead($config, "TrainLogout", "TrainLogoutMaxTimeTXT", "15")
 	Else
 		Return False
 	EndIf

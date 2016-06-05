@@ -133,42 +133,40 @@ Func isTimeInRange($startTime, $endTime)
 EndFunc   ;==>isTimeInRange
 
 Func checkRemainingTraining()
-
+	Local $AddRandomTIme = Random($minTrainAddition, $maxTrainAddition, 1)
+	Local $iMaxTimeSleep = 0
 	If $ichkCloseTraining = 0 Then Return
-
-	If $ArmyCapacity > 80 Then
+	If $ArmyCapacity > 90 Then
 		Setlog( "Skip CCWT, Troops is Over " & $ArmyCapacity & "% Done", $COLOR_BLUE)
 		Return
 	EndIf
-
 	; Get the time remaining in minutes
 	If $iTotalCountSpell = 0 Then
 		Local $iRemainingTimeTroops = RemainTrainTime(True, False) ; Not necessary "read" the Spells
 	Else
 		Local $iRemainingTimeTroops = RemainTrainTime(True, True)
 	EndIf
-
+	; Request CC troops
+	If $canRequestCC = True Then 
+		Setlog( "CCWT: Try Request troops before sleep", $COLOR_BLUE)
+		RequestCC()
+	EndIf
 	; Check if the Remaining time is less than 5 minutes
-	If $iRemainingTimeTroops < 6 Then 
-		Setlog( "Skip CCWT, Time < 5 Min [ Calculated: " & $iRemainingTimeTroops & " Min ]", $COLOR_BLUE)
+	If $iRemainingTimeTroops < 5 Then 
+		Setlog( "Skip CCWT, Time < 5 Min [ Calculated: " & ( $iRemainingTimeTroops ) & " Min ]", $COLOR_BLUE)
 		Return
+	Else
+		; check for max logout time ( config from user )
+		IF $TrainLogoutMaxTime = 1 Then
+			$iMaxTimeSleep = Number($TrainLogoutMaxTimeTXT)
+			If $iRemainingTimeTroops > $iMaxTimeSleep Then
+				Setlog( "Calculated CCWT Time: " & $iRemainingTimeTroops & " Min [Adjusted " & ( $iMaxTimeSleep + $AddRandomTIme ) & " Min]", $COLOR_BLUE)
+				$iRemainingTimeTroops = $iMaxTimeSleep
+			Endif
+		Endif
 	Endif
-
-	; If $iRemainingTimeTroops > 15 Then
-	;	Setlog( "Calculated CCWT Time: " & $iRemainingTimeTroops & " Min [Adjusted to 15~20 Min]", $COLOR_BLUE)
-	;	$iRemainingTimeTroops = 15
-	; Endif
-
-	; check for max logout time or add random additional time from $minTrainAddition minute to $maxTrainAddition minutes
-	; if max logout time checked, only logout for whatever the box is set to.
-	IF $TrainLogoutMaxTime = 1 and $iRemainingTimeTroops > $TrainLogoutMaxTimeTXT Then
-		$iRemainingTimeTroops = $TrainLogoutMaxTimeTXT - Random(0,1,0)
-		Setlog( "CCWT: " & round($iRemainingTimeTroops,1) & " Min (Max logout time enabled)", $COLOR_BLUE)
-	ELSE	
-		; Add random additional time from $minTrainAddition minute to $maxTrainAddition minutes
-		$iRemainingTimeTroops += Random($minTrainAddition, $maxTrainAddition, 1)
-	ENDIF
-
+	; Add random additional time from $minTrainAddition minute to $maxTrainAddition minutes
+	$iRemainingTimeTroops += $AddRandomTIme
 	; Convert remaining time to seconds and close COC and wait for that length of time
 	CloseCOCAndWait($iRemainingTimeTroops * 60, True)
 EndFunc   ;==>checkRemainingTraining

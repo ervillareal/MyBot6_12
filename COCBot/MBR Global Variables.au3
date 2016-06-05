@@ -1485,10 +1485,3 @@ Global Const $drillLevelSteal[6] = [59, _
 								    343, _
 								    479]
 
-; Troop types - Added CC Spell as a type, so clan castle spell can be reported.
-Global Enum  $eCCSpell = $eHaSpell + 1
-
-Global Const $eDeployWait = $eHaSpell + 1
-Global Const $eDeployUnused = $eHaSpell + 2
-Global Const $DEPLOY_WAIT_STRING = "<Delay>"
-Global Const $DEPLOY_EMPTY_STRING = "<Unused>"
