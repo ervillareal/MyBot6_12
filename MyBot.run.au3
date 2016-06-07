@@ -70,7 +70,8 @@ Local $sModversion
 ; "1205" ; CSV Fast Deployment Fusion
 ; "1206" ; CSV Deploy Speed Mod - mikemikemikecoc
 ; "1207" ; Allow BOT cpu priority only for single process
-$sModversion = "1208" ; Attack Now Button ( Attack Plan, Search & Attack, Active Base, Attack )
+; "1208" ; Attack Now Button ( Attack Plan, Search & Attack, Active Base, Attack )
+$sModversion = "1209" ; Updates for "CSV Fast Deployment Fusion" ( Speed Up FF )
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".1.r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
