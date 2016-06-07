@@ -47,9 +47,7 @@ If Not FileExists(@ScriptDir & "\License.txt") Then
 	$license = InetGet("http://www.gnu.org/licenses/gpl-3.0.txt", @ScriptDir & "\License.txt")
 EndIf
 
-;~ If $CmdLine[0] < 2 Then
 ;~ ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
-;~ EndIF
 #include "COCBot\MBR Global Variables.au3"
 #include "COCBot\functions\Config\ScreenCoordinates.au3"
 
