@@ -53,8 +53,14 @@ Local $x = 25, $y = 20
 			$txtTip =  GetTranslated(607,8, -1)
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetOnEvent(-1, "DuplicateScriptAB")
-		; CSV Deployment Speed Mod
-		$y += 134
+		;~ Attack Now Button
+		$y += 100
+
+		$btnAttNow = GUICtrlCreateButton("Attack Now", $x, $y, 91, 25)
+				GUISetState(@SW_SHOW)
+				GUICtrlSetOnEvent(-1, "AttackNow")
+		;~ CSV Deployment Speed Mod
+		$y += 34
 		$grpScriptSpeedAB = GUICtrlCreateGroup("CSV Deployment  Speed", $x, $y, 230, 50)
 			$lbltxtSelectedSpeedAB = GUICtrlCreateLabel("Normal speed", $x + 15, $y + 20, 75, 25)
 				GUICtrlSetTip(-1, "Increase or decrease the speed at which the CSV attack script deploys troops and waves.")

@@ -52,24 +52,25 @@ EndIf
 #include "COCBot\functions\Config\ScreenCoordinates.au3"
 
 Local $sModversion
-$sModversion = "0000" ; MyBot.run v6.0.0
-$sModversion = "1000" ; MyBot.run v6.1.0
-$sModversion = "1100" ; MyBot.run v6.1.1
-$sModversion = "1101" ; Fix for Donations
-$sModversion = "1102" ; Add Close While Training
-$sModversion = "1103" ; Start SmartZap Fix
-$sModversion = "1104" ; SmartZap ok
-$sModversion = "1105" ; Fix for CCWT
-$sModversion = "1106" ; CCWT will exec only if Train Troops < 80%
-$sModversion = "1107" ; Revert Fix for Donations ( Chk_1101 )
-$sModversion = "1200" ; MyBot.run v6.1.2
-$sModversion = "1201" ; SmartZap, FastClicks, CCWT, DEB
-$sModversion = "1202" ; CCWT user set max sleep time
-$sModversion = "1203" ; CCWT try request troops before
-$sModversion = "1204" ; Valks Train HotFix
-$sModversion = "1205" ; CSV Fast Deployment Fusion
-$sModversion = "1206" ; CSV Deploy Speed Mod - mikemikemikecoc
-$sModversion = "1207" ; Allow BOT cpu priority only for single process
+; "0000" ; MyBot.run v6.0.0
+; "1000" ; MyBot.run v6.1.0
+; "1100" ; MyBot.run v6.1.1
+; "1101" ; Fix for Donations
+; "1102" ; Add Close While Training
+; "1103" ; Start SmartZap Fix
+; "1104" ; SmartZap ok
+; "1105" ; Fix for CCWT
+; "1106" ; CCWT will exec only if Train Troops < 80%
+; "1107" ; Revert Fix for Donations ( Chk_1101 )
+; "1200" ; MyBot.run v6.1.2
+; "1201" ; SmartZap, FastClicks, CCWT, DEB
+; "1202" ; CCWT user set max sleep time
+; "1203" ; CCWT try request troops before
+; "1204" ; Valks Train HotFix
+; "1205" ; CSV Fast Deployment Fusion
+; "1206" ; CSV Deploy Speed Mod - mikemikemikecoc
+; "1207" ; Allow BOT cpu priority only for single process
+$sModversion = "1208" ; Attack Now Button ( Attack Plan, Search & Attack, Active Base, Attack )
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".1.r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
