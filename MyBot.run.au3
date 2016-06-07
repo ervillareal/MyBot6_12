@@ -27,11 +27,9 @@
 #pragma compile(Out, MyBot.run.exe)  ; Required
 
 ;~ Boost launch time by increasing process priority (will be restored again when finished launching)
-Local $iBotProcessPriority
-If $aCmdLine[0] < 2 Then
-	$iBotProcessPriority = _ProcessGetPriority(@AutoItPID)
-	ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
-EndIF
+;~ Local $iBotProcessPriority = _ProcessGetPriority(@AutoItPID)
+;~ ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
+
 
 Global $iBotLaunchTime = 0
 Local $hBotLaunchTime = TimerInit()
@@ -47,7 +45,7 @@ If Not FileExists(@ScriptDir & "\License.txt") Then
 EndIf
 
 ;~ If $aCmdLine[0] < 2 Then
-	;~ ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
+;~ ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
 ;~ EndIF
 #include "COCBot\MBR Global Variables.au3"
 #include "COCBot\functions\Config\ScreenCoordinates.au3"
@@ -69,7 +67,7 @@ $sModversion = "1202" ; CCWT user set max sleep time
 $sModversion = "1203" ; CCWT try request troops before
 $sModversion = "1204" ; Valks Train HotFix
 $sModversion = "1205" ; CSV Fast Deployment Fusion
-$sModversion = "1206" ; CSV Deploy Speed Mod
+$sModversion = "1206" ; CSV Deploy Speed Mod - mikemikemikecoc
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".1.r" & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
@@ -185,9 +183,9 @@ $iBotLaunchTime = TimerDiff($hBotLaunchTime)
 SetDebugLog("MyBot.run launch time " & Round($iBotLaunchTime) & " ms.")
 
 ;~ Restore process priority
-If $aCmdLine[0] < 2 Then
-	ProcessSetPriority(@AutoItPID, $iBotProcessPriority)
-EndIF
+;~ If $aCmdLine[0] < 2 Then
+;~ ProcessSetPriority(@AutoItPID, $iBotProcessPriority)
+;~ EndIF
 
 ;AutoStart Bot if request
 AutoStart()
