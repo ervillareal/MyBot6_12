@@ -27,8 +27,8 @@
 #pragma compile(Out, MyBot.run.exe)  ; Required
 
 ;~ Boost launch time by increasing process priority (will be restored again when finished launching)
-Local $iBotProcessPriority = _ProcessGetPriority(@AutoItPID)
-ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
+; Local $iBotProcessPriority = _ProcessGetPriority(@AutoItPID)
+; ProcessSetPriority(@AutoItPID, $PROCESS_ABOVENORMAL)
 
 Global $iBotLaunchTime = 0
 Local $hBotLaunchTime = TimerInit()
@@ -62,6 +62,7 @@ $sModversion = "Chk_1200" ; MyBot.run v6.1.2
 $sModversion = "Chk_1201" ; SmartZap, FastClicks, CCWT, DEB
 $sModversion = "Chk_1202" ; CCWT user set max sleep time
 $sModversion = "Chk_1203" ; CCWT try request troops before
+$sModversion = "Chk_1204" ; Valks Train HotFix
 $sBotVersion = "v6.1.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & ".1 " & $sModversion & " " ;~ Don't use any non file name supported characters like \ / : * ? " < > |
 
@@ -177,7 +178,7 @@ $iBotLaunchTime = TimerDiff($hBotLaunchTime)
 SetDebugLog("MyBot.run launch time " & Round($iBotLaunchTime) & " ms.")
 
 ;~ Restore process priority
-ProcessSetPriority(@AutoItPID, $iBotProcessPriority)
+; ProcessSetPriority(@AutoItPID, $iBotProcessPriority)
 
 ;AutoStart Bot if request
 AutoStart()
