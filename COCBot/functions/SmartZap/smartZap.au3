@@ -86,33 +86,6 @@ Func getSpellOffset()
 	Return $result
 EndFunc   ;==>getSpellOffset
 
-; This function taken and modified by the CastSpell function to make Zapping works
-Func PerformZap($ZapSpell, $x, $y)
-
-	Local $Spell = -1
-	Local $name = ""
-
-	If _Sleep(10) Then Return
-	If $Restart = True Then Return
-
-	For $i = 0 To UBound($atkTroops) - 1
-		If $atkTroops[$i][0] = $ZapSpell Then
-			$Spell = $i
-			$name = NameOfTroop($ZapSpell, 0)
-		EndIf
-	Next
-
-	If $Spell > -1 Then
-		SetLog("Dropping " & $name)
-		SelectDropTroop($Spell)
-		If _Sleep($iDelayCastSpell1) Then Return
-		If IsAttackPage() Then Click($x, $y, 1, 0, "#0029")
-	Else
-		If $debugSetLog = 1 Then SetLog("No " & $name & " Found")
-	EndIf
-
-EndFunc   ;==>PerformZap
-
 Func smartZap($minDE = -1)
 	Local $searchDark, $oldSearchDark = 0, $numSpells, $skippedZap = True, $performedZap = False, $dropPoint
 
@@ -317,3 +290,30 @@ Func smartZap($minDE = -1)
 
 	Return $performedZap
 EndFunc   ;==>smartZap
+
+; This function taken and modified by the CastSpell function to make Zapping works
+Func PerformZap($ZapSpell, $x, $y)
+
+	Local $Spell = -1
+	Local $name = ""
+
+	If _Sleep(10) Then Return
+	If $Restart = True Then Return
+
+	For $i = 0 To UBound($atkTroops) - 1
+		If $atkTroops[$i][0] = $ZapSpell Then
+			$Spell = $i
+			$name = NameOfTroop($ZapSpell, 0)
+		EndIf
+	Next
+
+	If $Spell > -1 Then
+		SetLog("Dropping " & $name)
+		SelectDropTroop($Spell)
+		If _Sleep($iDelayCastSpell1) Then Return
+		If IsAttackPage() Then Click($x, $y, 1, 0, "#0029")
+	Else
+		If $debugSetLog = 1 Then SetLog("No " & $name & " Found")
+	EndIf
+
+EndFunc   ;==>PerformZap

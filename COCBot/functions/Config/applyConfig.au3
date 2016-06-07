@@ -2265,6 +2265,15 @@ EndIf
 
 	cmbScriptNameDB()
 	cmbScriptNameAB()
+
+	; CSV Deployment Speed Mod
+	GUICtrlSetData($sldSelectedSpeedDB, $isldSelectedCSVSpeed[$DB])
+	GUICtrlSetData($sldSelectedSpeedAB, $isldSelectedCSVSpeed[$LB])
+
+	sldSelectedSpeedDB()
+	sldSelectedSpeedAB()
+	; CSV Deployment Speed Mod - end
+
 	If $DevMode = 1 Then GUICtrlSetState($chkmakeIMGCSV, $GUI_SHOW)
     If $makeIMGCSV = 1 Then
 		GUICtrlSetState($chkmakeIMGCSV, $GUI_CHECKED)
