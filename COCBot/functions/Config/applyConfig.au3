@@ -2370,7 +2370,7 @@ LoadABSnipeAttacks() ; recreate combo box values
 _GUICtrlComboBox_SetCurSel($cmbTHSnipeBeforeLBScript, _GUICtrlComboBox_FindStringExact($cmbTHSnipeBeforeLBScript, $THSnipeBeforeLBScript))
 
 
-	; by AwessomeGamer
+	; by AwesomeGamer
 	If $iChkDontRemove = 1 Then
 		GUICtrlSetState($chkDontRemove, $GUI_CHECKED)
 	Else

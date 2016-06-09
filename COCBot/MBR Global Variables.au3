@@ -1430,7 +1430,7 @@ Global $THSnipeBeforeDBEnable = 0 , $THSnipeBeforeLBEnable = 0
 Global $THSnipeBeforeDBTiles = 0 , $THSnipeBeforeLBTiles = 0
 Global $THSnipeBeforeDBScript = 0 , $THSnipeBeforeLBScript = 0
 
-; by AwessomeGamer
+; by AwesomeGamer
 Global $iChkDontRemove, $chkDontRemove
 
 ; Close while training variables

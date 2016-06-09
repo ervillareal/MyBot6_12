@@ -2238,7 +2238,7 @@ Func saveConfig() ;Saves the controls settings to the config
 	IniWriteS($config, "android", "adb.clicks.enabled", ($AndroidAdbClicksEnabled ? "1" : "0"))
 	IniWriteS($config, "android", "adb.clicks.troop.deploy.size", $AndroidAdbClicksTroopDeploySize)
 
-	; by AwessomeGamer
+	; by AwesomeGamer
 	If GUICtrlRead($chkDontRemove) = $GUI_CHECKED Then
 		IniWriteS($config, "troop", "DontRemove", 1)
 	Else

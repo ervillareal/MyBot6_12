@@ -55,7 +55,6 @@ Local $x = 25, $y = 20
 			GUICtrlSetOnEvent(-1, "DuplicateScriptAB")
 		;~ Attack Now Button
 		$y += 100
-
 		$btnAttNow = GUICtrlCreateButton("Attack Now", $x, $y, 91, 25)
 				GUISetState(@SW_SHOW)
 				GUICtrlSetOnEvent(-1, "AttackNow")

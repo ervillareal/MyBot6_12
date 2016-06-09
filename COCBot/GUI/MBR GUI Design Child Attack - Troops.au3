@@ -278,7 +278,7 @@ Local $x = $xStart +  160 + 148, $y = $yStart +  80 + 25 - 60
 			GUICtrlSetState(-1, $GUI_HIDE)
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-	; by AwessomeGamer
+	; by AwesomeGamer
 Local $x = $xStart +  25, $y = $yStart +  330
 	$grpMods = GUICtrlCreateGroup("Barrack Options", $x - 20, $y - 20, 142, 45)
 		$y += 0

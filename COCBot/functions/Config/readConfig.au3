@@ -1016,7 +1016,7 @@ Func readConfig($inputfile = $config, $partial = False) ;Reads config and sets i
 		$AndroidAdbClicksEnabled = IniRead($config, "android", "adb.clicks.enabled", ($AndroidAdbClicksEnabled ? "1" : "0")) = "1"
 		$AndroidAdbClicksTroopDeploySize = Int(IniRead($config, "android", "adb.clicks.troop.deploy.size", $AndroidAdbClicksTroopDeploySize))
 
-		; by AwessomeGamer
+		; by AwesomeGamer
 		$iChkDontRemove = IniRead($config, "troop", "DontRemove", "0")
 
 		; SmartZap Settings - Added by LunaEclipse
